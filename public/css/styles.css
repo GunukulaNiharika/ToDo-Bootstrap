@@ -1,0 +1,165 @@
+
+.row-header {
+    margin: 0px ;
+    padding: 0px 0px; }
+  
+.row-content {
+    margin: 0px ;
+    padding: 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px; 
+}
+.jumbotron {
+    margin: 0px ;
+    padding-top: 30px;
+    padding-left: 0px;
+    height: 195px;
+    background: #cdaeec;
+    color: floralwhite; 
+}
+#title{
+width: 245px;
+height: 104px;
+font-family: 'Sorts Mill Goudy';
+font-style: normal;
+font-weight: 500;
+font-size: 60px;
+line-height: 104px;
+text-align: center;
+letter-spacing: 0.02em;
+text-transform: capitalize;
+color: #F2C94C;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+body {
+    padding: 50px 0px 0px 0px;
+    z-index: 0; 
+}
+.navbar-dark {
+    background-color: #9B51E0; 
+}
+.nav-item{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 37px;
+    color: #FFFFFF;
+    opacity: 1;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.caption
+{
+    font-family: 'Nanum Myeongjo';
+    font-style: italic;
+    padding-top: 55px;
+    padding-left: 70px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 37px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    word-spacing: 0.1cm;
+    text-transform: capitalize;
+    color: #9B51E0;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.add{
+    color: #cdaeec;
+    border: none;
+    outline: none;
+}
+.search-task,.btn-outline-dark{
+    background: rgba(234, 198, 247, 0.6) !important;
+    border: 1px solid rgba(46, 25, 80, 0.97);
+    box-sizing: border-box;
+}
+
+.searchbar{
+    margin-top: 100px;
+}
+.task{
+    margin-top: 41px;
+    background: rgba(181, 137, 197, 0.6);
+    border: 3px solid #886292;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.alert{
+    margin-top: 20px;
+    border: 1px solid #A41515;
+
+}
+
+.task-name{
+font-family: 'Montserrat Alternates';
+font-style: normal;
+font-weight: bold;
+color: rgba(46, 25, 80, 0.97);
+
+}
+.checkbox-lg .custom-control-label::before, 
+.checkbox-lg .custom-control-label::after {
+  top: .8rem;
+  width: 1.00rem;
+  height: 1.00rem;
+}
+
+.checkbox-lg .custom-control-label {
+  padding-top: 13px;
+  padding-left: 6px;
+}
+
+.date{
+    border: 1px solid rgba(46, 25, 80, 0.97);
+    box-sizing: border-box;
+    height: 43px;
+    align-items: center;
+    display: inline-block;
+    text-align: center;
+    width: fit-content;
+}
+
+
+.imp{
+    background: rgba(254, 121, 121, 0.31);
+    border: 1px solid #A41515;
+    box-sizing: border-box;
+    height: 43px;
+    display: inline-block;
+    text-align: center;
+
+}
+.date-txt{
+    color: rgba(46, 25, 80, 0.97);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 37px;
+}
+.imp-txt{
+    color: #A41515;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 37px;
+}
+.close{
+    color: red;
+}
+.modal-title{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 49px;
+    color: #F2C94C;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.form-control{
+    background: rgba(234, 198, 247, 0.6) !important;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+}

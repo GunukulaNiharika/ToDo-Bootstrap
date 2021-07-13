@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <!--build:css css/main.css-->
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="/fontawe/font-awesome.min.css">
+        <link rel="stylesheet" href="/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Montserrat+Alternates&family=Nanum+Myeongjo&family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+        <!--endbuild-->
+        
+        <title>TO DO</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top" >
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand mr-auto " href="#"><img src="img/notes.png" width="41" height="41"> </a>
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item "> <a class="nav-link" href="/"><span class="fa fa-home "></span> Home</a></li>
+                        <li class="nav-item active"> <a class="nav-link" href="#"><span class="fa fa-calendar "></span> Today</a></li>
+                        <li class="nav-item "> <a class="nav-link" href="/notes"><span class="fa fa-edit "></span> Notes</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="modal fade" tabindex="-1" role="dialog" id="newTaskModal" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="content">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-center" id="exampleModalCenterTitle">New Task</h3>
+                        <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row  mt-3 ">
+                                <input type="text" class="form-control col-12 col-md-6" maxlength="8" id="tasktitle" placeholder="Task">
+                            </div>  
+                            <div class="form-row mt-3">
+                                <input type="date" id="taskdate" placeholder="Date" class="form-control col-12 col-md-5">
+                                <select class="form-control col-12 col-md-5 offset-md-1 mt-3 mt-md-0" id="important" >
+                                    <option>Normal</option>
+                                    <option>important</option>
+                                  </select>
+                            </div>       
+                            <div class="form-row mt-3 center">
+                                <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-warning btn-sm ml-1">ADD</button>        
+                            </div>                  
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="jumbotron">
+            <div class="container">
+                <div class="row row-header align-items-center">
+                    <div class="d-none d-sm-block col-sm-2 col-md-1">
+                        <img src="img/notes.png" width="80px" height="80px">
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <h1 id="title">TO DO</h1>
+                    </div>
+                    <div class="d-none d-md-block col-md-8 pl-md-5 pl-lg-2 col-lg-7">
+                        <blockquote class="blockquote">
+                            <footer class="blockquote-footer caption">
+                                Each day I will accomplish one thing on my to do list
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="col-12 col-lg-2 ">
+                        <button class="btn add" type="button" id="newTask">
+                            <img  src="img/add.png" width="100px" height="100px">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <form>
+                <div class="row searchbar">
+                    <div class="input-group ">
+                            <input class="form-control search-task" type="search" placeholder="Search">
+                        <button type="button" class="btn btn-outline-dark">
+                            <img  src="img/search.png" width="20px" height="20px">
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="row ">
+                <div class="card task col-12">
+                    <div class="card-body">
+                        <div class="row" style="float: right;">
+                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
+                            <a href="#" class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
+                        </div>
+                        <div class="row" >
+                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
+                                <input type="checkbox"  class="custom-control-input" id="checkbox-2" >
+                                <label class="custom-control-label task-name" for="checkbox-2">Exercise</label>
+                            </div>
+                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
+                                <p class="date-txt">12/07/2021</p>
+                            </div>
+                            <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
+                                <p class="imp-txt">Imp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/jquery/jquery.slim.min.js"></script>
+        <script src="/popper/popper.min.js"></script>
+        <script src="/scripts/js/bootstrap.min.js"></script>
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
