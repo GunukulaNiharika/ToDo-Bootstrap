@@ -38,18 +38,24 @@ const UserSchema=new mongoose.Schema({
         required: [true, 'please enter a email'],
         unique: true,
         lowercase: true
-      },
-      password: {
+    },
+    password: {
         type: String,
         required: true,
         minlength: 6
-      },
-      task:[addTaskSchema],
-      notes:[addNoteSchema],
+    },
+    username: {
+        type: String,
+        required: [true, 'please enter a username'],
+        unique: true,
+        lowercase: true
+    },
+    task:[addTaskSchema],
+    notes:[addNoteSchema],
 })
 
 // fire a function before doc saved to db
-userSchema.pre('save', async function(next) {
+UserSchema.pre('save', async function(next) {
     if(!this.isModified("password")){
       return next;
     }
@@ -57,5 +63,18 @@ userSchema.pre('save', async function(next) {
     this.password = await bcrypt.hash(this.password, salt);
     
     next();
-  });
+});
+UserSchema.statics.login = async function(username, password) {
+    const user = await this.findOne({username});
+    if (user) {
+      const auth = await bcrypt.compare(password, user.password);
+      if (auth) {
+        return user;
+      }
+      throw Error('incorrect password');
+    }
+    throw Error('incorrect username');
+};
   
+const User = mongoose.model('user', UserSchema);
+module.exports = User;

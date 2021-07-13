@@ -12,6 +12,16 @@ $(document).ready(function(){
     $('#LoginButton').click(function(){
         $('#loginModal').modal('show');
     });
-
+    $('#registerform').click(function(){
+        $('#loginModal').modal('hide');
+        $('#registerModal').modal('show');
+    });
+    $('#login_form').click(function(){
+        $('#registerModal').modal('hide');
+        $('#loginModal').modal('show');
+    });
+    $('#logoutButton').click(function(){
+        $('#logout_modal').modal('show');
+    });
     
 });

@@ -1,6 +1,8 @@
 const express=require('express')
 const path = require("path")
 const mongoose=require("mongoose")
+const route=require('./routes/route');
+const cookieParser = require('cookie-parser');
 
 
 const dotenv = require('dotenv')
@@ -15,6 +17,8 @@ mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology:
   .catch((err) => console.log(err));
 
 app.use(express.static('public'))
+app.use(express.json());
+app.use(cookieParser());
 app.use('/css',express.static(__dirname+'public/css'))
 app.use('/css',express.static(__dirname+'/node_modules/bootstrap/dist/css'))
 app.use('/img',express.static(__dirname+'public/img'))
@@ -28,12 +32,5 @@ app.use('/partials',express.static(__dirname+'/views/partials/'));
 
 app.set('views','./views')
 app.set('view engine','ejs')
-app.get('/',(req,res)=>{
-    res.render('home');
-});
-app.get('/today',(req,res)=>{
-    res.render('Today');
-})
-app.get('/notes',(req,res)=>{
-    res.render('Note');
-})
+
+app.use(route);
