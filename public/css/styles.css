@@ -75,7 +75,7 @@ body {
     box-sizing: border-box;
 }
 
-.searchbar{
+.searchbar,.card-container{
     margin-top: 100px;
 }
 .task{

@@ -1,0 +1,49 @@
+<div class="modal fade" tabindex="-1" role="dialog" <% if(page!="notes"){ %> id="newTaskModal" <% } else{ %> id="newNoteModal" <% } %> aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center" id="exampleModalCenterTitle">
+                    <% if(page!="notes"){ %> 
+                        New Task
+                    <% } else{ %> 
+                        New Note 
+                    <% } %> 
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+            </div>
+            <div class="modal-body">
+                <% if(page!="notes"){ %> 
+                    <form>
+                        <div class="form-row  mt-3 ">
+                            <input type="text" class="form-control col-12 col-md-6" maxlength="8" id="tasktitle" placeholder="Task">
+                        </div>  
+                        <div class="form-row mt-3">
+                            <input type="date" id="taskdate" placeholder="Date" class="form-control col-12 col-md-5">
+                            <select class="form-control col-12 col-md-5 offset-md-1 mt-3 mt-md-0" id="important" >
+                                <option>Normal</option>
+                                <option>important</option>
+                              </select>
+                        </div>       
+                        <div class="form-row mt-3 center">
+                            <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-warning btn-sm ml-1">ADD</button>        
+                        </div>                  
+                    </form>
+                <% } else{ %> 
+                    <form>
+                        <div class="form-row  mt-3 ">
+                            <input type="text" class="form-control col-12 col-md-6" maxlength="8" id="notetitle" placeholder="Title">
+                        </div>  
+                        <div class="form-row mt-3">
+                            <textarea class="form-control col-12" id="notetext" placeholder="Text" rows="4"></textarea>
+                        </div>       
+                        <div class="form-row mt-3 center">
+                            <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-warning btn-sm ml-1">ADD</button>        
+                        </div>                  
+                    </form>
+                <% } %>               
+            </div>
+        </div>
+    </div>
+</div>

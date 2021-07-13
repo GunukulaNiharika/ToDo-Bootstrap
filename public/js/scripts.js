@@ -8,7 +8,10 @@ $(document).ready(function(){
    
     $('.close').click(function(){
        $(this).closest('.card').hide()
-    })
+    });
+    $('#LoginButton').click(function(){
+        $('#loginModal').modal('show');
+    });
 
     
 });
