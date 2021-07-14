@@ -40,24 +40,6 @@ const createToken = (id) => {
   });
 };
 
-module.exports.home_get=async(req,res)=>{
-  const token = req.cookies.jwt; 
-    if (token) {
-      jwt.verify(token, process.env.jwt_secret, async (err, decodedToken) => {
-        if (err) {
-          console.log(err.message);
-          res.render('home',{userobj:"null"});
-        } else {
-          let user = await User.findById(decodedToken.id); 
-          res.render('home',{userobj:user});
-        }
-      });   
-    } 
-    else {
-      res.render('home',{userobj:"null"});
-    }
-}
-
 module.exports.signup_post = async (req, res) => {
     const{ email, password, username } = req.body;
     try {
@@ -96,6 +78,25 @@ module.exports.logout_get = (req, res) => {
   res.redirect('/');
 }
 
+
+module.exports.home_get=async(req,res)=>{
+  const token = req.cookies.jwt; 
+    if (token) {
+      jwt.verify(token, process.env.jwt_secret, async (err, decodedToken) => {
+        if (err) {
+          console.log(err.message);
+          res.render('home',{userobj:"null"});
+        } else {
+          let user = await User.findById(decodedToken.id); 
+          res.render('home',{userobj:user});
+        }
+      });   
+    } 
+    else {
+      res.render('home',{userobj:"null"});
+    }
+}
+
 module.exports.today_get=(req,res)=>{
   const token = req.cookies.jwt; 
     if (token) {
@@ -129,4 +130,60 @@ module.exports.notes_get=(req,res)=>{
     else {
       res.redirect('/');
     }
+}
+
+module.exports.addtask_post=(req,res)=>{
+  const { title, date, priority } = req.body;
+
+  try{
+    const token=req.cookies.jwt;
+    if(token){
+      jwt.verify(token, process.env.jwt_secret, async(err, decodedToken)=>{
+        if(err){
+          res.locals.user=null;
+        }
+        else{
+          let is_Checked=false;
+          let user=await User.findById(decodedToken.id);
+          const addtask={title, date, priority, is_Checked };
+          user.task.push(addtask);
+          const updated = await user.save(); 
+          res.status(200).json({ user: user._id });
+        }
+      });
+    }
+    else{
+      res.redirect('/');
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+module.exports.addnote_post=(req,res)=>{
+  const { Note, Text } = req.body;
+
+  try{
+    const token=req.cookies.jwt;
+    if(token){
+      jwt.verify(token, process.env.jwt_secret, async(err, decodedToken)=>{
+        if(err){
+          res.locals.user=null;
+        }
+        else{
+          let user=await User.findById(decodedToken.id);
+          const addtask={Note, Text};
+          user.notes.push(addtask);
+          const updated = await user.save(); 
+          res.status(200).json({ user: user._id });
+        }
+      });
+    }
+    else{
+      res.redirect('/note');
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
 }

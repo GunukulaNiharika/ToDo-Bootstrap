@@ -3,11 +3,16 @@ const path = require("path")
 const mongoose=require("mongoose")
 const route=require('./routes/route');
 const cookieParser = require('cookie-parser');
-
+// penguin = require('penguin')
 
 const dotenv = require('dotenv')
 dotenv.config();
 const app=express();
+
+
+// admin = new penguin.Admin()
+
+
 mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
   .then((result) =>{
       console.log('mongodb connected');
@@ -16,6 +21,7 @@ mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology:
 })
   .catch((err) => console.log(err));
 
+// admin.setupApp(app)
 app.use(express.static('public'))
 app.use(express.json());
 app.use(cookieParser());

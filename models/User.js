@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt=require('bcrypt');
 const addTaskSchema=new mongoose.Schema({
-task:{
+title:{
     type:String,
     required:[true, 'Please enter task'],
-    maxlength:8
+    maxlength:10
 },
 date:{
     type: Date,
@@ -24,7 +24,7 @@ const addNoteSchema=new mongoose.Schema({
     Note:{
         type:String,
         required:[true, 'Please enter Note title'],
-        maxlength:8
+        maxlength:10
     },
   
     Text:{

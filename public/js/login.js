@@ -77,7 +77,7 @@ sform.addEventListener('submit', async (e) => {
     }
   });
 
-  const lform = document.getElementById('loginform');
+const lform = document.getElementById('loginform');
 const lnameError = document.getElementById('name_error_login');
 const lpasswordError = document.getElementById('password_error_login');
 
