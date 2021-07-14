@@ -29,7 +29,7 @@ noteForm.addEventListener('submit', async(e)=>{
         });
         const data = await res.json();
         if (data.user) {
-          location.assign('/');
+          location.assign('/notes');
         }
       }
       catch (err) {

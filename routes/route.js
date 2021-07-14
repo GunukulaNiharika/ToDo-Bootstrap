@@ -10,5 +10,7 @@ router.post('/login', controller.login_post);
 router.get('/logout',controller.logout_get);
 router.post('/addtask',controller.addtask_post);
 router.post('/addnote',controller.addnote_post);
+router.post('/deltask',controller.deltask_post);
+router.post('/delnote',controller.delnote_post);
 
 module.exports = router;

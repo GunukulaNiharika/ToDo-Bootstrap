@@ -188,3 +188,55 @@ module.exports.addnote_post=(req,res)=>{
     console.log(err);
   }
 }
+
+module.exports.deltask_post=(req,res)=>{
+  const{id}=req.body;
+  try{
+    const token = req.cookies.jwt;
+    if(token){
+      jwt.verify(token,process.env.jwt_secret,async (err,decodedToken)=>{
+        if(err){
+          res.locals.user=null;
+        }
+        else{
+          let user = await User.findById(decodedToken.id);
+          user.task.remove({_id:id});
+          user.save(); 
+          res.status(200).json({ status: true }); 
+        }
+      });
+    }
+    else{
+      res.redirect('/');
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+
+module.exports.delnote_post=(req,res)=>{
+  const{id}=req.body;
+  try{
+    const token = req.cookies.jwt;
+    if(token){
+      jwt.verify(token,process.env.jwt_secret,async (err,decodedToken)=>{
+        if(err){
+          res.locals.user=null;
+        }
+        else{
+          let user = await User.findById(decodedToken.id);
+          user.notes.remove({_id:id});
+          user.save(); 
+          res.status(200).json({ status: true }); 
+        }
+      });
+    }
+    else{
+      res.redirect('/notes');
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
+}

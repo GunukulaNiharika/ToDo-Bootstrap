@@ -6,7 +6,7 @@ $(document).ready(function(){
         $('#newNoteModal').modal('show');
     });
    
-    $('.close').click(function(){
+    $('.close-alert').click(function(){
        $(this).closest('.card').hide()
     });
     $('#LoginButton').click(function(){
@@ -24,4 +24,9 @@ $(document).ready(function(){
         $('#logout_modal').modal('show');
     });
     
+    
 });
+function closeButtonClick(id){
+    $('#del_modal').modal('show');
+    $("#delete-button").prop('id', id);
+}

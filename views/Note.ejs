@@ -21,62 +21,27 @@
         <%- include('partials/header.ejs',{page:"notes"}) %>
         <%- include('partials/loginModal.ejs') %>
         <%- include('partials/addModal.ejs',{page:"notes"}) %>
+        <%- include('./partials/Modal.ejs',{page:"notes"}) %>
         <div class="container">
-            <div class="row card-container">
-                <div class="card note col-12 col-md-4 col-lg-3 mr-2 mt-2" id="1">
-                    <div class="card-header note-head">
-                        <button type="button" class="close" aria-label="Close">&times;</button>
-                        <h3>one more example note</h3>
-                    </div>
-                    <div class="card-body note-text">
-                        <h5>one more example note</h5>
-                    </div>
-                </div>
-                <div class="card note col-12 col-md-4 col-lg-3 mr-2 mt-2">
-                    <div class="card-header note-head">
-                        <button type="button" class="close"  data-dismiss="card" >&times;</button>
-                        <h3>Form controls</h3>
-                    </div>
-                    <div class="card-body note-text">
-                        <h5>Textual form controls like < input >s, 
-                            < select >s,and < textarea >s are styled with the 
-                            .form-control class. 
-                            Included are styles for general appearance, focus 
-                            state, sizing, and more.
-
-                        </h5>
-                    </div>
-                </div>
-                <div class="card note col-12 col-md-4 col-lg-3 mr-2 mt-2">
-                    <div class="card-header note-head">
-                        <button type="button" class="close" data-dismiss="card" >&times;</button>
-                        <h3>Form controls</h3>
-                    </div>
-                    <div class="card-body note-text">
-                        <h5>Textual form controls like < input >s, 
-                            < select >s,and < textarea >s are styled with the 
-                            .form-control class. 
-                            Included are styles for general appearance, focus 
-                            state, sizing, and more.
-
-                        </h5>
-                    </div>
-                </div>
-                <div class="card note col-12 col-md-4 col-lg-3 mr-2 mt-2">
-                    <div class="card-header note-head">
-                        <button type="button" class="close" data-dismiss="card" >&times;</button>
-                        <h3>Form controls</h3>
-                    </div>
-                    <div class="card-body note-text">
-                        <h5>Textual form controls like < input >s, 
-                            < select >s,and < textarea >s are styled with the 
-                            .form-control class. 
-                            Included are styles for general appearance, focus 
-                            state, sizing, and more.
-
-                        </h5>
-                    </div>
-                </div>
+            <div class="card-columns card-container">
+                <% if(userobj!=null) { %>
+                    <% if(userobj.notes.length >0) { %>
+                        <% userobj.notes.forEach(n=>{ %>
+                                <div class="card note " id=<%= n.id %>>
+                                    <div class="card-header note-head">
+                                        <a class="close " id=<%= n.id %> onclick="closeButtonClick(this.id)">
+                                            <img src="./img/del.png" width="30px" height="30px"> </a>
+                                        <h3><%= n.Note %></h3>
+                                    </div>
+                                    <div class="card-body note-text">
+                                        <h5><%= n.Text %></h5>
+                                    </div>
+                                </div>
+                        <% }) %>
+                    <% }else { %>
+                        <div>Add Important Notes</div>
+                    <% } %>
+                <% } %>
             </div>
         </div>
         <script src="/jquery/jquery.slim.min.js"></script>
@@ -84,5 +49,6 @@
         <script src="/scripts/js/bootstrap.min.js"></script>
         <script src="/js/scripts.js"></script>
         <script src="/js/addnote.js"></script>
+        <script src="/js/delTask.js"></script>
     </body>
 </html>

@@ -21,6 +21,7 @@
         <%- include('partials/header.ejs',{page:"today"}) %>
         <%- include('partials/loginModal.ejs') %>
         <%- include('partials/addModal.ejs',{page:"today"}) %>
+        <%- include('./partials/Modal.ejs',{page:"today"}) %>
         <div class="container">
             <form>
                 <div class="row searchbar">
@@ -41,7 +42,7 @@
                                 <div class="card-body">
                                     <div class="row" style="float: right;">
                                         <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                                        <a class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
+                                        <a class="close " id=<%= t.id %> onclick="closeButtonClick(this.id)"><img src="./img/del.png" width="30px" height="30px"> </a>
                                     </div>
                                     <div class="row" >
                                         <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
@@ -70,5 +71,6 @@
         <script src="/scripts/js/bootstrap.min.js"></script>
         <script src="/js/scripts.js"></script>
         <script src="/js/addtask.js"></script>
+        <script src="/js/delTask.js"></script>
     </body>
 </html>

@@ -39,7 +39,7 @@
         </div>
         <% if(userobj!="null") { %>
             <span class="navbar-text">
-                <h4 ><%= userobj.username%> </h4>
+                <h4 id="username"><%= userobj.username%> </h4>
             </span>
         <%} else {%>
         <span class="navbar-text">
@@ -72,4 +72,3 @@
         </div>
     </div>
 </header>
-<%- include('./logoutModal.ejs') %>
