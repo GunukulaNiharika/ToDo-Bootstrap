@@ -32,107 +32,39 @@
                     </div>
                 </div>
             </form>
-            <div class="row">
-                <div class="card task col-12">
-                    <div class="card-body">
-                        <div class="row" style="float: right;">
-                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                            <a class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
-                        </div>
-                        <div class="row" >
-                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                <input type="checkbox"  class="custom-control-input" id="checkbox-1" >
-                                <label class="custom-control-label task-name" for="checkbox-1">Project1</label>
-                            </div>
-                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                <p class="date-txt">10/07/2021</p>
-                            </div>
-                            <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
-                                <p class="imp-txt">Imp</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="card task col-12">
-                    <div class="card-body">
-                        <div class="row" style="float: right;">
-                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                            <a href="#" class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
-                        </div>
-                        <div class="row" >
-                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                <input type="checkbox"  class="custom-control-input" id="checkbox-2" >
-                                <label class="custom-control-label task-name" for="checkbox-2">Exercise</label>
-                            </div>
-                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                <p class="date-txt">12/07/2021</p>
-                            </div>
-                            <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
-                                <p class="imp-txt">Imp</p>
+
+            <% if(userobj!=null) { %>
+                <% if(userobj.task.length >0) { %>
+                    <% userobj.task.forEach(t=>{ %>
+                        <div class="row" id=<%= t.id %>>
+                            <div class="card task col-12">
+                                <div class="card-body">
+                                    <div class="row" style="float: right;">
+                                        <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
+                                        <a class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
+                                            <input type="checkbox"  class="custom-control-input" id="checkbox-1" >
+                                            <label class="custom-control-label task-name" for="checkbox-1"><%= t.title %></label>
+                                        </div>
+                                        <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
+                                            <p class="date-txt"><%= moment(t.date).format("DD/MM/YY")%></p>
+                                        </div>
+                                        <% if(t.priority!="Normal"){ %>
+                                        <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
+                                            <p class="imp-txt">Imp</p>
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="card task col-12">
-                    <div class="card-body">
-                        <div class="row" style="float: right;">
-                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                            <a href="#" class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
-                        </div>
-                        <div class="row" >
-                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                <input type="checkbox"  class="custom-control-input" id="checkbox-3" >
-                                <label class="custom-control-label task-name" for="checkbox-3">Write Report</label>
-                            </div>
-                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                <p class="date-txt">08/07/2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="card task col-12">
-                    <div class="card-body">
-                        <div class="row" style="float: right;">
-                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                            <a href="#"  class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
-                        </div>
-                        <div class="row" >
-                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                <input type="checkbox"  class="custom-control-input" id="checkbox-4">
-                                <label class="custom-control-label task-name" for="checkbox-4">Apply Job</label>
-                            </div>
-                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                <p class="date-txt">01/07/2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="card task col-12">
-                    <div class="card-body">
-                        <div class="row" style="float: right;">
-                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                            <a href="#" class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
-                        </div>
-                        <div class="row" >
-                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                <input type="checkbox"  class="custom-control-input" id="checkbox-4">
-                                <label class="custom-control-label task-name" for="checkbox-4">Assign</label>
-                            </div>
-                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                <p class="date-txt">06/07/2021</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <% }) %>
+                <% }else { %>
+                    <div>It's time to add some tasks</div>
+                <% } %>
+            <% } %>
             <%- include('partials/alert.ejs') %>
         </div>
         <script src="/jquery/jquery.slim.min.js"></script>

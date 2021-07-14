@@ -32,28 +32,38 @@
                     </div>
                 </div>
             </form>
-            <div class="row ">
-                <div class="card task col-12">
-                    <div class="card-body">
-                        <div class="row" style="float: right;">
-                            <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                            <a href="#" class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
+            <% if(userobj!=null) { %>
+                <% if(userobj.task.length >0) { %>
+                    <% userobj.task.forEach(t=>{ %>
+                        <% if(moment(t.date).format("DD/MM/YY")==moment(moment()).format("DD/MM/YY")) { %>
+                        <div class="row" id=<%= t.id %>>
+                            <div class="card task col-12">
+                                <div class="card-body">
+                                    <div class="row" style="float: right;">
+                                        <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
+                                        <a class="close"><img src="./img/del.png" width="30px" height="30px"> </a>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
+                                            <input type="checkbox"  class="custom-control-input" id="checkbox-1" >
+                                            <label class="custom-control-label task-name" for="checkbox-1"><%= t.title %></label>
+                                        </div>
+                                        <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
+                                            <p class="date-txt"><%= moment(t.date).format("DD/MM/YY")%></p>
+                                        </div>
+                                        <% if(t.priority!="Normal"){ %>
+                                        <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
+                                            <p class="imp-txt">Imp</p>
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row" >
-                            <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                <input type="checkbox"  class="custom-control-input" id="checkbox-2" >
-                                <label class="custom-control-label task-name" for="checkbox-2">Exercise</label>
-                            </div>
-                            <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                <p class="date-txt">12/07/2021</p>
-                            </div>
-                            <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
-                                <p class="imp-txt">Imp</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <% } %>
+                    <% }) %>
+                <% } %>
+            <% } %>
         </div>
         <script src="/jquery/jquery.slim.min.js"></script>
         <script src="/popper/popper.min.js"></script>

@@ -1,5 +1,6 @@
 const User =require('../models/User');
 const jwt = require('jsonwebtoken');
+const moment=require('moment');
 const bcrypt = require('bcrypt');
 
 const handleErrors = (err) => {
@@ -85,15 +86,15 @@ module.exports.home_get=async(req,res)=>{
       jwt.verify(token, process.env.jwt_secret, async (err, decodedToken) => {
         if (err) {
           console.log(err.message);
-          res.render('home',{userobj:"null"});
+          res.render('home',{userobj:"null",moment:moment});
         } else {
           let user = await User.findById(decodedToken.id); 
-          res.render('home',{userobj:user});
+          res.render('home',{userobj:user,moment:moment});
         }
       });   
     } 
     else {
-      res.render('home',{userobj:"null"});
+      res.render('home',{userobj:"null",moment:moment});
     }
 }
 
@@ -103,10 +104,10 @@ module.exports.today_get=(req,res)=>{
       jwt.verify(token, process.env.jwt_secret, async (err, decodedToken) => {
         if (err) {
           console.log(err.message);
-          res.render('home',{userobj:"null"});
+          res.render('home',{userobj:"null",moment:moment});
         } else {
           let user = await User.findById(decodedToken.id); 
-          res.render('Today',{userobj:user});
+          res.render('Today',{userobj:user,moment:moment});
         }
       });   
     } 
@@ -120,7 +121,7 @@ module.exports.notes_get=(req,res)=>{
       jwt.verify(token, process.env.jwt_secret, async (err, decodedToken) => {
         if (err) {
           console.log(err.message);
-          res.render('home',{userobj:"null"});
+          res.render('home',{userobj:"null",moment:moment});
         } else {
           let user = await User.findById(decodedToken.id); 
           res.render('Note',{userobj:user});
