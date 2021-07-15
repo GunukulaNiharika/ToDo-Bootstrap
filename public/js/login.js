@@ -49,11 +49,11 @@ sform.addEventListener('submit', async (e) => {
         return false;
     }
     else if(repassword == "" || repassword == null){
-    	alert("repeat password field empty!!")
+      passwordError.textContent = 'repeat password field empty!!';
     	return false;
     }
 	else if(password != repassword){
-		alert("password match error");
+    passwordError.textContent = 'password match error';
 		return false;
 	} 
 

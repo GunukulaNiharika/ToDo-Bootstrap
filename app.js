@@ -13,7 +13,7 @@ const app=express();
 // admin = new penguin.Admin()
 
 
-mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+mongoose.connect(process.env.dbURI, {useFindAndModify:false, useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
   .then((result) =>{
       console.log('mongodb connected');
       app.listen(process.env.PORT,()=>console.log(`${process.env.PORT}`));

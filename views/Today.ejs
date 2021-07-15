@@ -25,44 +25,56 @@
         <div class="container">
             <form>
                 <div class="row searchbar">
-                    <div class="input-group ">
-                            <input class="form-control search-task" type="search" placeholder="Search">
-                        <button type="button" class="btn btn-outline-dark">
+                    <div class="input-group col-12 col-md-6 ml-auto">
+                            <input class="form-control search-task" id="myInput" type="search" onkeyup="myFunction()" placeholder="Search">
+                            <button type="button" class="btn btn-outline-dark" onclick="myFunction()">
                             <img  src="img/search.png" width="20px" height="20px">
                         </button>
                     </div>
                 </div>
             </form>
-            <% if(userobj!=null) { %>
+            <% if(userobj!="null") { %>
                 <% if(userobj.task.length >0) { %>
-                    <% userobj.task.forEach(t=>{ %>
-                        <% if(moment(t.date).format("DD/MM/YY")==moment(moment()).format("DD/MM/YY")) { %>
-                        <div class="row" id=<%= t.id %>>
-                            <div class="card task col-12">
-                                <div class="card-body">
-                                    <div class="row" style="float: right;">
-                                        <a href="#" class="edit"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
-                                        <a class="close " id=<%= t.id %> onclick="closeButtonClick(this.id)"><img src="./img/del.png" width="30px" height="30px"> </a>
+                    <ul id = "myUL" class="list-unstyled">
+                        <% userobj.task.forEach(t=>{ %>
+                            <% if(moment(t.date).format("DD/MM/YY")==moment(moment()).format("DD/MM/YY")) { %>
+                                <li><a href="#" id=<%= t.title %>>
+                                    <div class="row" id=<%= t.id %>>
+                                        <div class="card task col-12">
+                                            <div class="card-body">
+                                                <div class="row" style="float: right;">
+                                                    
+                                                    <a class="close " id=<%= t.id %> onclick="closeButtonClick(this.id)"><img src="./img/del.png" width="30px" height="30px"> </a>
+                                                </div>
+                                                <div class="row" >
+                                                    <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
+                                                        <input type="checkbox"  class="form-check-input" onchange="ifChecked(this.id,'today')" name=<%= t.id %> id=<%= "c_"+t.id %>  
+                                                        <% if (t.is_Checked){ %>
+                                                            checked
+                                                        <% } %>
+                                                        >
+                                                        <% if (t.is_Checked){ %>
+                                                            <label  for=<%= "c_"+t.id %> class="form-check-label task-name strike" ><%= t.title %></label>
+                                                        <% }else{ %>
+                                                            <label  for=<%= "c_"+t.id %> class="form-check-label task-name" ><%= t.title %></label>
+                                                        <% } %>
+                                                    </div>
+                                                    <div class="date col-5 col-sm-5 col-md-4 col-lg-3 offset-1 offset-md-1">
+                                                        <p class="date-txt"><%= moment(t.date).format("DD/MM/YY")%></p>
+                                                    </div>
+                                                    <% if(t.priority!="Normal"){ %>
+                                                    <div class="imp col-3 col-sm-4 col-md-4 col-lg-3 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
+                                                        <p class="imp-txt">Imp</p>
+                                                    </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row" >
-                                        <div class="custom-control custom-checkbox checkbox-lg col-5 col-sm-4 col-md-1">
-                                            <input type="checkbox"  class="custom-control-input" id="checkbox-1" >
-                                            <label class="custom-control-label task-name" for="checkbox-1"><%= t.title %></label>
-                                        </div>
-                                        <div class="date col-5 col-sm-5 col-md-4 offset-1 offset-md-1">
-                                            <p class="date-txt"><%= moment(t.date).format("DD/MM/YY")%></p>
-                                        </div>
-                                        <% if(t.priority!="Normal"){ %>
-                                        <div class="imp col-3 col-sm-4 col-md-4 offset-6 offset-sm-5 offset-md-1 mt-1 mt-md-0">
-                                            <p class="imp-txt">Imp</p>
-                                        </div>
-                                        <% } %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                    <% }) %>
+                                </a></li>
+                            <% } %>
+                        <% }) %>
+                    </ul>
                 <% } %>
             <% } %>
         </div>

@@ -42,35 +42,52 @@ async function deleteNote(id,page){
       }
 }
 async function ifChecked(id,page){
-  var checkbox=document.getElementsByName(id);
-  console.log(checkbox.name);
+  var checkbox=document.getElementById(id);
+ 
+  var is_Checked;
   if(checkbox.checked){
-    console.log("checked");
+    is_Checked=true;
   }
   else{
-    console.log("not checked");
+    is_Checked=false;
   }
+ var _id=checkbox.name;
 
-
-  // try {
-  //   const res = await fetch('/checktask', { 
-  //     method: 'POST', 
-  //     body: JSON.stringify({id}),
-  //     headers: {'Content-Type': 'application/json'}
-  //   });
-  //   const data = await res.json();
-  //   console.log(data);
-  //   if (data.status) {
-  //     if(page=="home")
-  //       location.assign('/');
-  //     else if(page=="today")
-  //       location.assign('/today');
-  //   }
-  //   else {
-  //      console.log('check check');
-  //   }
-  // }
-  // catch (err) {
-  //   console.log(err);
-  // }
+  try {
+    const res = await fetch('/checktask', { 
+      method: 'POST', 
+      body: JSON.stringify({_id,is_Checked}),
+      headers: {'Content-Type': 'application/json'}
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.status) {
+      if(page=="home")
+        location.assign('/');
+      else if(page=="today")
+        location.assign('/today');
+    }
+    else {
+       console.log('check check');
+    }
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+function myFunction() {
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.id;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+      } else {
+          li[i].style.display = "none";
+      }
+  }
 }

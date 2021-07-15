@@ -12,5 +12,5 @@ router.post('/addtask',controller.addtask_post);
 router.post('/addnote',controller.addnote_post);
 router.post('/deltask',controller.deltask_post);
 router.post('/delnote',controller.delnote_post);
-
+router.post('/checktask',controller.checktask_post);
 module.exports = router;

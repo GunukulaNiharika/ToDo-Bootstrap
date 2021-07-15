@@ -79,7 +79,7 @@ module.exports.logout_get = (req, res) => {
   res.redirect('/');
 }
 
-
+var priorities = {'important' : 1,'Normal' : 2}
 module.exports.home_get=async(req,res)=>{
   const token = req.cookies.jwt; 
     if (token) {
@@ -89,11 +89,15 @@ module.exports.home_get=async(req,res)=>{
           res.render('home',{userobj:"null",moment:moment});
         } else {
           let user = await User.findById(decodedToken.id); 
+          user.task.sort(function (task1, task2) {
+            return priorities[task1.priority] - priorities[task2.priority];
+          });
           res.render('home',{userobj:user,moment:moment});
         }
       });   
     } 
     else {
+      
       res.render('home',{userobj:"null",moment:moment});
     }
 }
@@ -107,6 +111,9 @@ module.exports.today_get=(req,res)=>{
           res.render('home',{userobj:"null",moment:moment});
         } else {
           let user = await User.findById(decodedToken.id); 
+          user.task.sort(function (task1, task2) {
+            return priorities[task1.priority] - priorities[task2.priority];
+          });
           res.render('Today',{userobj:user,moment:moment});
         }
       });   
@@ -234,6 +241,37 @@ module.exports.delnote_post=(req,res)=>{
     }
     else{
       res.redirect('/notes');
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
+}
+
+module.exports.checktask_post=(req,res)=>{
+  const{_id, is_Checked}=req.body;
+  try{
+    const token = req.cookies.jwt;
+    if(token){
+      jwt.verify(token,process.env.jwt_secret,async(err,decodedToken)=>{
+        if(err){
+          res.locals.user=null;
+        }
+        else{
+          let user = await User.findById(decodedToken.id);
+           User.updateOne({_id:user.id},
+            {$set:{'task.$[t].is_Checked':is_Checked}},
+            {arrayFilters:[{'t._id':_id}]},
+            function(err,doc){
+              if(err){
+                console.log(err);
+              }
+              else{
+                res.status(200).json({ status: true }); 
+              }
+            });
+        }
+      });
     }
   }
   catch(err){
