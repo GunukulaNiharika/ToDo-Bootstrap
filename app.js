@@ -5,8 +5,8 @@ const route=require('./routes/route');
 const cookieParser = require('cookie-parser');
 // penguin = require('penguin')
 
-const dotenv = require('dotenv')
-dotenv.config();
+// const dotenv = require('dotenv')
+// dotenv.config();
 const app=express();
 
 
