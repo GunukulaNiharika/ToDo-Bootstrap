@@ -1,0 +1,29 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="editNote" aria-labelledby="CenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center" id="CenterTitle">
+                    Edit Note
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+            </div>
+            <div class="modal-body"> 
+                    <form id="editNotesForm" action="/editnote" name="editnoteForm">
+                        <div class="form-row  mt-3 ">
+                            <input type="text" class="form-control col-12 col-md-6" id="edit_notetitle" 
+                            value="" name="edit_notetitle" placeholder="Title">
+                        </div>  
+                        <div id="note_title_error"></div>
+                        <div class="form-row mt-3">
+                            <textarea class="form-control col-12" id="edit_notetext" value="" name="edit_notetext" placeholder="Text" rows="4"></textarea>
+                        </div>
+                        <div id="note_text_error"></div>       
+                        <div class="form-row mt-3 center">
+                            <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">Cancel</button>
+                            <button type="submit" id="editbutton" name="editbutton" class="btn btn-warning btn-sm ml-1">Save</button>        
+                        </div>                  
+                    </form>           
+            </div>
+        </div>
+    </div>
+</div>

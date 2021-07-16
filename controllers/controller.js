@@ -278,3 +278,34 @@ module.exports.checktask_post=(req,res)=>{
     console.log(err);
   }
 }
+
+module.exports.editnote_post=(req,res)=>{
+  const { Note, Text, id } = req.body;
+  try{
+    const token = req.cookies.jwt;
+    if(token){
+      jwt.verify(token,process.env.jwt_secret,async(err,decodedToken)=>{
+        if(err){
+          res.locals.user=null;
+        }
+        else{
+          let user = await User.findById(decodedToken.id);
+           User.updateOne({_id:user.id},
+            {$set:{'notes.$[t].Note':Note,'notes.$[t].Text':Text}},
+            {arrayFilters:[{'t._id':id}]},
+            function(err,doc){
+              if(err){
+                console.log(err);
+              }
+              else{
+                res.status(200).json({ status: true }); 
+              }
+            });
+        }
+      });
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
+}

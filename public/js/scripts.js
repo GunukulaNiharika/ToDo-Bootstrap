@@ -30,3 +30,10 @@ function closeButtonClick(id){
     $('#del_modal').modal('show');
     $("#delete-button").prop('id', id);
 }
+function EditNote(Note,id,Text){
+    $('#editNote').modal('show');
+    $('#edit_notetitle').val(Note);
+    $('textarea#edit_notetext').val(Text);
+    $("#editbutton").prop('id', id);
+    
+}

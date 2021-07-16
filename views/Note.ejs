@@ -21,6 +21,7 @@
         <%- include('partials/header.ejs',{page:"notes"}) %>
         <%- include('partials/loginModal.ejs') %>
         <%- include('partials/addModal.ejs',{page:"notes"}) %>
+        <%- include('partials/editModal.ejs') %>
         <%- include('./partials/Modal.ejs',{page:"notes"}) %>
         <div class="container">
             <form>
@@ -39,12 +40,13 @@
                         <ul id = "myUL" class="list-unstyled">
                             <% userobj.notes.forEach(n=>{ %>
                                 <li><a href="#" id=<%= n.Note %>>
-                                    <div class="card note " id=<%= n.id %>>
-                                        <div class="card-header note-head">
+                                    <div class="card note ">
+                                        <div class="card-header note-head" >
                                            
                                             <a class="close " id=<%= n.id %> onclick="closeButtonClick(this.id)">
                                                 <img src="./img/del.png" width="30px" height="30px"> </a>
-                                                <a class="edit close"><img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
+                                                <a class="edit close" id="<%= n.Text %>" name="<%= n.Note %>" accesskey="<%= n.id %>" onclick="EditNote(this.name,this.accessKey,this.id)">
+                                                    <img src="./img/edit.png" width="30px" height="30px" class="mr-2 mb-1"></a>
                                             <h3><%= n.Note %></h3>
                                         </div>
                                         <div class="card-body note-text">
